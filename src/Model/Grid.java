@@ -39,4 +39,12 @@ public class Grid {
     public double getHeight() {
         return cols * SIZE;
     }
+
+    public Food getFood() {
+        return food;
+    }
+
+    public Snake getSnake() {
+        return snake;
+    }
 }
