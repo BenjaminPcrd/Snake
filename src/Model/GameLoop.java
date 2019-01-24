@@ -13,7 +13,7 @@ public class GameLoop implements Runnable {
     public GameLoop(Grid grid, GraphicsContext context) {
         this.grid = grid;
         this.context = context;
-        frameRate = 1;
+        frameRate = 10;
         interval = 1000.0f / frameRate;
         paused = false;
     }
@@ -23,7 +23,8 @@ public class GameLoop implements Runnable {
         while (!paused) {
             float time = System.currentTimeMillis();
 
-            //System.out.println("frame");
+            System.out.println("frame");
+            grid.getSnake().move();
             Painter.paint(grid, context);
 
             time = System.currentTimeMillis() - time;

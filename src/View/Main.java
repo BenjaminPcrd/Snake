@@ -25,15 +25,19 @@ public class Main extends Application {
             switch(key.getCode()) {
                 case UP:
                     System.out.println("UP");
+                    grid.getSnake().setUp();
                     break;
                 case DOWN:
                     System.out.println("DOWN");
+                    grid.getSnake().setDown();
                     break;
                 case LEFT:
                     System.out.println("LEFT");
+                    grid.getSnake().setLeft();
                     break;
                 case RIGHT:
                     System.out.println("RIGHT");
+                    grid.getSnake().setRight();
                     break;
                 case ENTER:
                     System.out.println("ENTER");
