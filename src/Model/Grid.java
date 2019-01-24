@@ -1,9 +1,12 @@
 package Model;
 
+import javafx.scene.paint.Color;
+
 import java.util.Random;
 
 public class Grid {
     public static final int SIZE = 10;
+    public static final Color COLOR= Color.BLACK;
 
     private final int rows;
     private final int cols;
@@ -27,5 +30,13 @@ public class Grid {
             point = new Point(random.nextInt(rows), random.nextInt(cols));
         } while(point.equals(snake.getHead()));
         return point;
+    }
+
+    public double getWidth() {
+        return rows * SIZE;
+    }
+
+    public double getHeight() {
+        return cols * SIZE;
     }
 }
