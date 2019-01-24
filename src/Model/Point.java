@@ -17,9 +17,8 @@ public class Point {
         return y;
     }
 
-    public void translate(int dx, int dy) {
-        x += dx;
-        y += dy;
+    public Point translate(int dx, int dy) {
+        return new Point(x + dx, y + dy);
     }
 
     @Override

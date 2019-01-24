@@ -23,6 +23,15 @@ public class Grid {
         food = new Food(getRandomPoint());
     }
 
+    public void update() {
+        if(food.getPoint().equals(snake.getHead())) {
+            snake.extend();
+            food.setPoint(getRandomPoint());
+        } else {
+            snake.move();
+        }
+    }
+
     private Point getRandomPoint() {
         Random random = new Random();
         Point point;

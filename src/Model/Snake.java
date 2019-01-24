@@ -11,6 +11,7 @@ public class Snake {
     private List<Point> points;
     private int xSpeed;
     private int ySpeed;
+    private boolean collision;
 
     public Snake(Point startPoint) {
         head = startPoint;
@@ -18,11 +19,43 @@ public class Snake {
         points.add(startPoint);
         xSpeed = 0;
         ySpeed = 0;
+        collision = false;
+    }
 
+    private void growTo(Point point) {
+        checkAndAdd(point);
+    }
+
+    private void checkAndAdd(Point point) {
+
+
+        if(points.contains(point)) {
+            collision = true;
+        }
+        System.out.println(collision);
+        points.add(point);
+        head = point;
+    }
+
+    private void shiftTo(Point point) {
+        checkAndAdd(point);
+        points.remove(0);
     }
 
     public void move() {
-        head.translate(xSpeed, ySpeed);
+        if(isStart()) {
+            shiftTo(head.translate(xSpeed, ySpeed));
+        }
+    }
+
+    public void extend() {
+        if(isStart()) {
+            growTo(head.translate(xSpeed, ySpeed));
+        }
+    }
+
+    private boolean isStart() {
+        return xSpeed != 0 || ySpeed != 0;
     }
 
     public Point getHead() {

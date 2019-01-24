@@ -23,8 +23,7 @@ public class GameLoop implements Runnable {
         while (!paused) {
             float time = System.currentTimeMillis();
 
-            System.out.println("frame");
-            grid.getSnake().move();
+            grid.update();
             Painter.paint(grid, context);
 
             time = System.currentTimeMillis() - time;
