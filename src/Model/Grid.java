@@ -18,7 +18,7 @@ public class Grid {
         rows = (int) width / SIZE;
         cols = (int) height / SIZE;
 
-        snake = new Snake(new Point(rows/2, cols/2));
+        snake = new Snake(new Point(rows/2, cols/2), this);
 
         food = new Food(getRandomPoint());
     }
@@ -30,6 +30,16 @@ public class Grid {
         } else {
             snake.move();
         }
+    }
+
+    public Point wrap(Point point) {
+        int x = point.getX();
+        int y = point.getY();
+        if(x >= rows) x = 0;
+        if(y >= cols) y = 0;
+        if(x < 0) x = rows - 1;
+        if(y < 0) y = cols - 1;
+        return new Point(x, y);
     }
 
     private Point getRandomPoint() {

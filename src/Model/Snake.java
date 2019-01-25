@@ -11,24 +11,28 @@ public class Snake {
     private List<Point> points;
     private int xSpeed;
     private int ySpeed;
+    private int length;
     private boolean collision;
+    private Grid grid;
 
-    public Snake(Point startPoint) {
+    public Snake(Point startPoint, Grid grid) {
         head = startPoint;
         points = new LinkedList<>();
         points.add(startPoint);
         xSpeed = 0;
         ySpeed = 0;
+        length = 1;
         collision = false;
+        this.grid = grid;
     }
 
     private void growTo(Point point) {
+        length++;
         checkAndAdd(point);
     }
 
     private void checkAndAdd(Point point) {
-
-
+        point = grid.wrap(point);
         if(points.contains(point)) {
             collision = true;
         }
@@ -67,22 +71,30 @@ public class Snake {
     }
 
     public void setUp() {
-        xSpeed = 0;
-        ySpeed = -1;
+        if(ySpeed != 1 || length == 1) {
+            xSpeed = 0;
+            ySpeed = -1;
+        }
     }
 
     public void setDown() {
-        xSpeed = 0;
-        ySpeed = 1;
+        if(ySpeed != -1 || length == 1) {
+            xSpeed = 0;
+            ySpeed = 1;
+        }
     }
 
     public void setLeft() {
-        xSpeed = -1;
-        ySpeed = 0;
+        if(xSpeed != 1 || length == 1) {
+            xSpeed = -1;
+            ySpeed = 0;
+        }
     }
 
     public void setRight() {
-        xSpeed = 1;
-        ySpeed = 0;
+        if(xSpeed != -1 || length == 1) {
+            xSpeed = 1;
+            ySpeed = 0;
+        }
     }
 }
