@@ -25,6 +25,11 @@ public class GameLoop implements Runnable {
 
             grid.update();
             Painter.paint(grid, context);
+            if(grid.getSnake().isCollision()) {
+                pause();
+                Painter.paintLoseMessage(context);
+                break;
+            }
 
             time = System.currentTimeMillis() - time;
             if (time < interval) {

@@ -36,7 +36,6 @@ public class Snake {
         if(points.contains(point)) {
             collision = true;
         }
-        System.out.println(collision);
         points.add(point);
         head = point;
     }
@@ -68,6 +67,14 @@ public class Snake {
 
     public List<Point> getPoints() {
         return points;
+    }
+
+    public boolean isCollision() {
+        return collision;
+    }
+
+    public int getLength() {
+        return length;
     }
 
     public void setUp() {
